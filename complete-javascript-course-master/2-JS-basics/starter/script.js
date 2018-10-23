@@ -49,18 +49,55 @@ mass / (height * height). (mass in kg and height in meter).
 GOOD LUCK 😀
 */
 
-var markHt = 1.7;
-var markWt = 100;
+// var markHt = 1.7;
+// var markWt = 100;
 
-var johnHt = 1.8;
-var johnWt = 120;
+// var johnHt = 1.8;
+// var johnWt = 120;
 
-var markBMI = markWt / (markHt**2)
-var johnBMI = johnWt / (johnHt**2)
+// var markBMI = markWt / (markHt**2)
+// var johnBMI = johnWt / (johnHt**2)
 
-var markMoreBMI = markBMI > johnBMI;
+// var markMoreBMI = markBMI > johnBMI;
 
 
-console.log('markBmi:', markBMI)
-console.log('johnBmi:', johnBMI)
-console.log('Is Mark\'s BMI higher than John\'s?', markMoreBMI)
+// console.log('markBmi:', markBMI)
+// console.log('johnBmi:', johnBMI)
+// console.log('Is Mark\'s BMI higher than John\'s?', markMoreBMI)
+
+
+/*
+Ternary and SWitch Operators
+*/
+// TERNARY
+var firstName = 'Robin';
+var age = 29;
+
+// age >= 21 ? console.log(firstName + ' drinks') : console.log(firstName + ' is too young')
+
+
+// SWITCH
+var job = 'developer'
+switch(job) {
+    case 'teacher': 
+        console.log(firstName + ' is a teacher');
+        break;
+    case 'developer': 
+        console.log(firstName + ' is a developer');
+        break;
+    case 'engineer': 
+        console.log(firstName + ' is a engineer');
+        break;
+    default: 
+        console.log(firstName + ' does something else')
+}
+
+
+
+// CODING CHALLENGE 2
+var johnScore = (89 + 120+103)/3;
+var markScore = (116 + 123+94)/3;
+var saraScore = (134 + 97 + 105)/3;
+
+var winner = johnScore === markScore ? 'no one' : (johnScore > markScore ? 'john' : 'mark')
+console.log(`${winner} is the winner`)

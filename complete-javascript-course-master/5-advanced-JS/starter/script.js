@@ -345,7 +345,7 @@
 
     questions[n].checkAnswer(answer);
 })();
-*/
+
 
 
 

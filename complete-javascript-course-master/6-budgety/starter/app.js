@@ -1,6 +1,27 @@
 // BUDGET CONTROLLER
 var budgetController = (function() {
+    var Expense = function(id,desc, value) {
+        this.id = id;
+        this.desc = desc;
+        this.value = value;
+    }
 
+    var Income = function(id,desc, value) {
+        this.id = id;
+        this.desc = desc;
+        this.value = value;
+    }
+
+    var data = {
+        allItems: {
+            exp: [],
+            inc: []
+        },
+        totals: {
+            exp: 0,
+            inc: 0
+        }
+    }
     
 
 })()
@@ -39,7 +60,17 @@ var UIController = (function() {
 
 //GLOBAL CONTROLLER
 var controller = (function(budgetCtrl, UICtrl) {
-    var DOM = UICtrl.getDOMstrings();
+    var setupEventListerner = function(){
+        var DOM = UICtrl.getDOMstrings();
+        document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem)
+
+        document.addEventListener('keypress', function(event) {
+            if (event.keyCode === 13) {
+                ctrlAddItem()
+            }
+        })
+    }
+    
 
     var ctrlAddItem = function() {
         // get input data
@@ -52,13 +83,12 @@ var controller = (function(budgetCtrl, UICtrl) {
         console.log('it works')
     }
 
-    document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem)
-
-
-    document.addEventListener('keypress', function(event) {
-        if (event.keyCode === 13) {
-            ctrlAddItem()
+    return {
+        init: function(){
+            setupEventListerner();
         }
-    })
+    }
 
 })(budgetController, UIController)
+
+controller.init()

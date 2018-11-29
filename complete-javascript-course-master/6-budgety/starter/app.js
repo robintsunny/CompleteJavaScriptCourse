@@ -187,6 +187,21 @@ var UIController = (function() {
             el.parentNode.removeChild(el);
             
         },
+        displayBudget: function (obj) {
+            var type;
+            obj.budget > 0 ? type = 'inc' : type = 'exp';
+
+            document.querySelector(DOMstrings.budgetLabel).textContent = formatNumber(obj.budget, type);
+            document.querySelector(DOMstrings.incomeLabel).textContent = formatNumber(obj.totalInc, 'inc');
+            document.querySelector(DOMstrings.expensesLabel).textContent = formatNumber(obj.totalExp, 'exp');
+
+            if (obj.percentage > 0) {
+                document.querySelector(DOMstrings.percentageLabel).textContent = obj.percentage + '%';
+            } else {
+                document.querySelector(DOMstrings.percentageLabel).textContent = '---';
+            }
+
+        },
         clearFields: function() {
             var fields, fieldsArr;
             fields = document.querySelectorAll(`${DOMstrings.inputDescription} , ${DOMstrings.inputValue}`);
@@ -264,13 +279,28 @@ var controller = (function(budgetCtrl, UICtrl) {
             type = splitID[0];
             ID = parseInt(splitID[1]);
 
+            //delete from budget 
             budgetCtrl.deleteItem(type,ID)
+
+            //delete from UI
+            UICtrl.deleteListItem(itemID)
+
+            // update budget
+            updateBudget()
         }
     }
 
     return {
-        init: function(){
-            setupEventListerner();
+        init: function () {
+            console.log('Application has started.');
+
+            UICtrl.displayBudget({
+                budget: 0,
+                totalInc: 0,
+                totalExp: 0,
+                percentage: -1
+            });
+            setupEventListeners();
         }
     }
 

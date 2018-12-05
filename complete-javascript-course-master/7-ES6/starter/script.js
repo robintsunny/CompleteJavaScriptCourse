@@ -53,17 +53,96 @@
 // console.log(c) // c is function scoped
 
 
-/////////////////
-// Strings
+// /////////////////
+// // Strings
 
-let firstName = 'Robin'
-let lastName = 'Sunny'
-const yearOfBirth = 1989;
+// let firstName = 'Robin'
+// let lastName = 'Sunny'
+// const yearOfBirth = 1989;
 
-//template literals using backticks
-let n = `${firstName} ${lastName}`
+// //template literals using backticks
+// let n = `${firstName} ${lastName}`
 
-console.log(n.startsWith('R')) // startsWith is a built in method
-console.log(n.endsWith('y')) //  built in method
-console.log(n.includes(' ')) //  built in method
-console.log(`${n} `.repeat(5)) //  built in method
+// console.log(n.startsWith('R')) // startsWith is a built in method
+// console.log(n.endsWith('y')) //  built in method
+// console.log(n.includes(' ')) //  built in method
+// console.log(`${n} `.repeat(5)) //  built in method
+
+
+
+// /////////////////
+// // Arrow functions
+const years = [1990, 1965, 1982, 1937];
+
+// es5
+var ages5 = years.map(function(el) {
+    return 2018-el
+})
+console.log(ages5) //
+
+
+// es6
+let ages6 = years.map(el => 2018 - el)
+console.log(ages6)
+
+ages6 = years.map((el,i) => {
+    const now = new Date().getFullYear();
+    return `age index ${i}: ${now-el}`
+})
+console.log(ages6)
+
+// arrow functions and 'this'
+
+// ES5
+var box5 = {
+    color: 'green',
+    position: 1,
+    self: this,
+    clickMe: function() {
+        var self = this;
+        document.querySelector('.green').addEventListener('click', function () {
+           var str = 'This is box number ' + self.position + ' and it is ' + self.color;
+           alert(str);
+       });
+    }
+}
+       //box5.clickMe();
+
+// box5.clickMe(); //error because clickMe points to global window, not box5 object. it is a regular function call
+
+const box6 = {
+    color: 'green',
+    position: 1,
+    clickMe: function () { // written this way because an arrow function will have THIS point to the window
+        document.querySelector('.green').addEventListener('click', () => {
+            var str = `This is box number ${this.position} and it is ${this.color}`;
+            alert(str);
+        });
+    }
+}
+
+box6.clickMe();
+
+
+function Person(name) {
+    this.name = name;
+}
+
+// ES5
+Person.prototype.myFriends5 = function(friends) {
+    var arr = friends.map(function(el) {
+        return this.name + ' is friends with ' + el
+    }.bind(this))
+    console.log(arr)
+}
+
+// ES6
+Person.prototype.myFriends6 = function(friends) {
+    var arr = friends.map(el => {
+        return `${this.name} is friends with ${el}`
+    })
+    console.log(arr)
+}
+
+var friends = ['Kristen', 'Dom', 'Wilson']
+new Person('Robin').myFriends6(friends)

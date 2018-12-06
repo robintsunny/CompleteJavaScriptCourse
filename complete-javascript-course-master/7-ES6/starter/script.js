@@ -41,6 +41,18 @@
 // console.log(i) // => 1,2,3,4,5 because var is function blocked
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 // /////////////////
 // // IIFE's and Blocks
 // {
@@ -51,6 +63,19 @@
 
 // console.log(a+b) // error: block scoped
 // console.log(c) // c is function scoped
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // /////////////////
@@ -70,79 +95,132 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 // /////////////////
 // // Arrow functions
-const years = [1990, 1965, 1982, 1937];
+// const years = [1990, 1965, 1982, 1937];
 
-// es5
-var ages5 = years.map(function(el) {
-    return 2018-el
-})
-console.log(ages5) //
+// // es5
+// var ages5 = years.map(function(el) {
+//     return 2018-el
+// })
+// console.log(ages5) //
 
 
-// es6
-let ages6 = years.map(el => 2018 - el)
-console.log(ages6)
+// // es6
+// let ages6 = years.map(el => 2018 - el)
+// console.log(ages6)
 
-ages6 = years.map((el,i) => {
-    const now = new Date().getFullYear();
-    return `age index ${i}: ${now-el}`
-})
-console.log(ages6)
+// ages6 = years.map((el,i) => {
+//     const now = new Date().getFullYear();
+//     return `age index ${i}: ${now-el}`
+// })
+// console.log(ages6)
 
-// arrow functions and 'this'
+// // arrow functions and 'this'
+
+// // ES5
+// var box5 = {
+//     color: 'green',
+//     position: 1,
+//     self: this,
+//     clickMe: function() {
+//         var self = this;
+//         document.querySelector('.green').addEventListener('click', function () {
+//            var str = 'This is box number ' + self.position + ' and it is ' + self.color;
+//            alert(str);
+//        });
+//     }
+// }
+//        //box5.clickMe();
+
+// // box5.clickMe(); //error because clickMe points to global window, not box5 object. it is a regular function call
+
+// const box6 = {
+//     color: 'green',
+//     position: 1,
+//     clickMe: function () { // written this way because an arrow function will have THIS point to the window
+//         document.querySelector('.green').addEventListener('click', () => {
+//             var str = `This is box number ${this.position} and it is ${this.color}`;
+//             alert(str);
+//         });
+//     }
+// }
+
+// box6.clickMe();
+
+
+// function Person(name) {
+//     this.name = name;
+// }
+
+// // ES5
+// Person.prototype.myFriends5 = function(friends) {
+//     var arr = friends.map(function(el) {
+//         return this.name + ' is friends with ' + el
+//     }.bind(this))
+//     console.log(arr)
+// }
+
+// // ES6
+// Person.prototype.myFriends6 = function(friends) {
+//     var arr = friends.map(el => {
+//         return `${this.name} is friends with ${el}`
+//     })
+//     console.log(arr)
+// }
+
+// var friends = ['Kristen', 'Dom', 'Wilson']
+// new Person('Robin').myFriends6(friends)
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////
+// Destructuring
 
 // ES5
-var box5 = {
-    color: 'green',
-    position: 1,
-    self: this,
-    clickMe: function() {
-        var self = this;
-        document.querySelector('.green').addEventListener('click', function () {
-           var str = 'This is box number ' + self.position + ' and it is ' + self.color;
-           alert(str);
-       });
-    }
-}
-       //box5.clickMe();
+// var john = ['john', 44]
+// var name = john[0];
+// var age  = john[1];
 
-// box5.clickMe(); //error because clickMe points to global window, not box5 object. it is a regular function call
+// const [name, age] = ['john', 44];
+// console.log(name); // 'john'
+// console.log(age); // 44
 
-const box6 = {
-    color: 'green',
-    position: 1,
-    clickMe: function () { // written this way because an arrow function will have THIS point to the window
-        document.querySelector('.green').addEventListener('click', () => {
-            var str = `This is box number ${this.position} and it is ${this.color}`;
-            alert(str);
-        });
-    }
-}
+// const obj = {
+//     firstName: 'john',
+//     lastName: 'smith'
+// }
 
-box6.clickMe();
+// const {firstName, lastName} = obj
+// console.log(firstName); // 'john'
+// console.log(lastName); // 'smith'
 
+// const {firstName: a, lastName: b} = obj;
+// console.log(a); // 'john'
+// console.log(b); // 'smith'
 
-function Person(name) {
-    this.name = name;
-}
+// function calcAgeRetirement(year) {
+//     const age = new Date().getFullYear() - year;
+//     return [age, 65 - age]
+// }
 
-// ES5
-Person.prototype.myFriends5 = function(friends) {
-    var arr = friends.map(function(el) {
-        return this.name + ' is friends with ' + el
-    }.bind(this))
-    console.log(arr)
-}
-
-// ES6
-Person.prototype.myFriends6 = function(friends) {
-    var arr = friends.map(el => {
-        return `${this.name} is friends with ${el}`
-    })
-    console.log(arr)
-}
-
-var friends = ['Kristen', 'Dom', 'Wilson']
-new Person('Robin').myFriends6(friends)
+// const [age, retirement] = calcAgeRetirement(1990);
+// console.log(`age: ${age}`)
+// console.log(`retirement in: ${retirement} years`)

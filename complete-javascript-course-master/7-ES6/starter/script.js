@@ -224,3 +224,61 @@
 // const [age, retirement] = calcAgeRetirement(1990);
 // console.log(`age: ${age}`)
 // console.log(`retirement in: ${retirement} years`)
+
+
+
+
+
+
+///////////////////////////////////////////////////
+// Arrays
+
+const boxes = document.querySelectorAll('.box') //returns a node list
+
+
+// // // ES5
+// var boxes5 = Array.prototype.slice.call(boxes) //returns an array
+// boxes5.forEach(function(box) {
+//     box.style.backgroundColor = 'blue'
+// })
+
+// for (var i = 0; i< boxes5.length; i++) {
+//     if (boxes5[i].className === 'box blue') {
+//         continue;
+//     } else {
+//         boxes5[i].textContent = 'I am now blue'
+//     }
+// }
+
+
+// var ages = [12, 17, 8, 21, 14, 11];
+
+// var full = ages.map(function (cur) {
+//     return cur >= 18;
+// });
+// console.log(full);
+
+// console.log(full.indexOf(true));
+// console.log(ages[full.indexOf(true)]);
+
+
+
+
+// ES6
+var boxes6 = Array.from(boxes) //returns an array
+
+boxes6.forEach(box => {
+    box.style.backgroundColor = 'orange'
+})
+
+for (const box of boxes6) {
+    if (box.className.includes('orange')) {
+        continue;
+    } else {
+        box.textContent = 'i am now orange'
+    }
+}
+
+
+console.log(ages.findIndex(cur => cur >= 18));
+console.log(ages.find(cur => cur >= 18));

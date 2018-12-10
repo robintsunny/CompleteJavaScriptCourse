@@ -233,7 +233,7 @@
 ///////////////////////////////////////////////////
 // Arrays
 
-const boxes = document.querySelectorAll('.box') //returns a node list
+// const boxes = document.querySelectorAll('.box') //returns a node list
 
 
 // // // ES5
@@ -264,21 +264,67 @@ const boxes = document.querySelectorAll('.box') //returns a node list
 
 
 
-// ES6
-var boxes6 = Array.from(boxes) //returns an array
+// // ES6
+// var boxes6 = Array.from(boxes) //returns an array
 
-boxes6.forEach(box => {
-    box.style.backgroundColor = 'orange'
-})
+// boxes6.forEach(box => {
+//     box.style.backgroundColor = 'orange'
+// })
 
-for (const box of boxes6) {
-    if (box.className.includes('orange')) {
-        continue;
-    } else {
-        box.textContent = 'i am now orange'
-    }
+// for (const box of boxes6) {
+//     if (box.className.includes('orange')) {
+//         continue;
+//     } else {
+//         box.textContent = 'i am now orange'
+//     }
+// }
+
+
+// console.log(ages.findIndex(cur => cur >= 18));
+// console.log(ages.find(cur => cur >= 18));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////
+// Spread Operator
+
+function addFourAges(a,b,c,d) {
+    return a+b+c+d
 }
 
 
-console.log(ages.findIndex(cur => cur >= 18));
-console.log(ages.find(cur => cur >= 18));
+// ES5
+var ages = [18,21,30,24];
+var sum2 = addFourAges.apply(null, ages); //apply takes an array, null for 'this' object
+console.log('sum2', sum2)
+
+
+// ES6
+const sum3 = addFourAges(...ages); // ... turns an array into a collection of arguments
+console.log('sum3', sum3)
+
+const sunnyFamily = ['robin', 'wilson'];
+const josephFamily = ['chris', 'dominic'];
+const michaelFamily = ['alen', 'alvin']
+const cousins = [...sunnyFamily, ...josephFamily, ...michaelFamily]
+console.log(cousins)
+
+
+const h = document.querySelector('h1')
+const boxes = document.querySelectorAll('.box')
+const all = [h, ...boxes]
+Array.from(all).forEach(box => {
+    box.style.color = 'purple'
+})

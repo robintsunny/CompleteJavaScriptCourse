@@ -297,34 +297,90 @@
 
 
 
+// ///////////////////////////////////////////////////
+// // Spread Operator
+
+// function addFourAges(a,b,c,d) {
+//     return a+b+c+d
+// }
+
+
+// // ES5
+// var ages = [18,21,30,24];
+// var sum2 = addFourAges.apply(null, ages); //apply takes an array, null for 'this' object
+// console.log('sum2', sum2)
+
+
+// // ES6
+// const sum3 = addFourAges(...ages); // ... turns an array into a collection of arguments
+// console.log('sum3', sum3)
+
+// const sunnyFamily = ['robin', 'wilson'];
+// const josephFamily = ['chris', 'dominic'];
+// const michaelFamily = ['alen', 'alvin']
+// const cousins = [...sunnyFamily, ...josephFamily, ...michaelFamily]
+// console.log(cousins)
+
+
+// const h = document.querySelector('h1')
+// const boxes = document.querySelectorAll('.box')
+// const all = [h, ...boxes]
+// Array.from(all).forEach(box => {
+//     box.style.color = 'purple'
+// })
+
+
+
+
+
+
+
 ///////////////////////////////////////////////////
-// Spread Operator
+// Rest Parameters
 
-function addFourAges(a,b,c,d) {
-    return a+b+c+d
-}
+// // ES5
+// function isFullAge5() {
+//     // console.log(arguments); // console logs an array-like object
 
+//     var args = Array.prototype.slice.call(arguments); //converted to array
+//     console.log(args)
 
-// ES5
-var ages = [18,21,30,24];
-var sum2 = addFourAges.apply(null, ages); //apply takes an array, null for 'this' object
-console.log('sum2', sum2)
+//     args.forEach(function(arg) {
+//          console.log(2018-arg >=18)
+//     })
+// }
 
-
-// ES6
-const sum3 = addFourAges(...ages); // ... turns an array into a collection of arguments
-console.log('sum3', sum3)
-
-const sunnyFamily = ['robin', 'wilson'];
-const josephFamily = ['chris', 'dominic'];
-const michaelFamily = ['alen', 'alvin']
-const cousins = [...sunnyFamily, ...josephFamily, ...michaelFamily]
-console.log(cousins)
+// isFullAge5(1990,1999,2001, 2018, 1900);
 
 
-const h = document.querySelector('h1')
-const boxes = document.querySelectorAll('.box')
-const all = [h, ...boxes]
-Array.from(all).forEach(box => {
-    box.style.color = 'purple'
-})
+// // ES6
+// function isFullAge6(...years) {
+//     console.log(years); //console logs an array
+// }
+// isFullAge6(1990,1999,2001, 2018, 1900);
+
+
+
+// // ES5
+// function isFullAge5(limit) {
+//     // console.log(arguments); // console logs an array-like object
+
+//     var args = Array.prototype.slice.call(arguments, 1); //converted to array. the 1 starts slicing at index 1
+//     console.log(args)
+
+//     args.forEach(function(arg) {
+//          console.log(2018-arg >= limit)
+//     })
+// }
+
+// isFullAge5(1000, 1990,1999,2001, 2018, 1900);
+
+
+// // ES6
+// function isFullAge6(limit, ...years) {
+//     console.log(years); //console logs an array
+//  years.forEach(year => {
+//      console.log(2018-year >= limit)
+// })
+// }
+// isFullAge6(1990,1999,2001, 2018, 1900);

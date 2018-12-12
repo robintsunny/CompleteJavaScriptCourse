@@ -384,3 +384,54 @@
 // })
 // }
 // isFullAge6(1990,1999,2001, 2018, 1900);
+
+
+
+
+
+
+
+
+
+
+// ///////////////////////////////////////////////////
+// // Default Parameters
+
+//////// ES5
+// function SmithPerson(fname, dob, lname, nationality) {
+
+//     lname === undefined ? 
+//         lname = 'Smith' : 
+//         lname = lname
+
+//     nationality === undefined ? 
+//         nationality = 'American' : 
+//         nationality = nationality
+
+//     this.fname = fname;
+//     this.lname = lname;
+//     this.dob = dob;
+//     this.nationality = nationality;
+// }
+
+// var john = new SmithPerson('John', 1990)
+// console.log(john)
+
+// var emily = new SmithPerson('Emily', 1983, 'Diaz', 'Spaniard')
+// console.log(emily)
+
+
+//////// ES6
+
+// function SmithPerson(fname, dob, lname = 'Smith', nationality = 'American') {
+//         this.fname = fname;
+//         this.lname = lname;
+//         this.dob = dob;
+//         this.nationality = nationality;
+//     }
+
+// var john = new SmithPerson('John', 1990)
+// console.log(john)
+
+// var emily = new SmithPerson('Emily', 1983, 'Diaz', 'Spaniard')
+// console.log(emily)

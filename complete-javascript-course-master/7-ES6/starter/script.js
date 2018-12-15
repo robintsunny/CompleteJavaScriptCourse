@@ -448,43 +448,90 @@
 
 // ///////////////////////////////////////////////////
 // // MAPS
-const question = new Map();
-question.set('question', 'What is the official name of the latest major JavaScript version?')
-question.set(1, 'ES5')
-question.set(2, 'ES6')
-question.set(3, 'ES2015')
-question.set(4, 'ES7')
-question.set('correct', 3)
-question.set(true, 'correct answer')
-question.set(false, 'Wrong answer')
+// const question = new Map();
+// question.set('question', 'What is the official name of the latest major JavaScript version?')
+// question.set(1, 'ES5')
+// question.set(2, 'ES6')
+// question.set(3, 'ES2015')
+// question.set(4, 'ES7')
+// question.set('correct', 3)
+// question.set(true, 'correct answer')
+// question.set(false, 'Wrong answer')
 
-console.log(question.get('question')) //return the value
-console.log(question.size) //returns 'length'
+// console.log(question.get('question')) //return the value
+// console.log(question.size) //returns 'length'
 
-question.delete(4) //deletes a key
+// question.delete(4) //deletes a key
 
-if (question.has(4)) { //checks to see if a key exists
-    console.log('4 is a key')
-} else {
-    console.log('4 is not a key')
-}
+// if (question.has(4)) { //checks to see if a key exists
+//     console.log('4 is a key')
+// } else {
+//     console.log('4 is not a key')
+// }
 
-// question.forEach((val,key) => {
-//     console.log(`the ${key} key has a value of ${val}`)
-// })
+// // question.forEach((val,key) => {
+// //     console.log(`the ${key} key has a value of ${val}`)
+// // })
 
-// for (let [key,val] of question.entries()) { // question.entries() returns [key,value]
-//     console.log(`the ${key} key has a value of ${val}`)
+// // for (let [key,val] of question.entries()) { // question.entries() returns [key,value]
+// //     console.log(`the ${key} key has a value of ${val}`)
+// // }
+
+
+// const ans = parseInt(prompt('write the correct answer'));
+// if (ans === question.get('correct')) {
+//     console.log(question.get(true))
+// } else {
+//     console.log(question.get(false))
 // }
 
 
-const ans = parseInt(prompt('write the correct answer'));
-if (ans === question.get('correct')) {
-    console.log(question.get(true))
-} else {
-    console.log(question.get(false))
-}
+// // question.clear(); // removes all keys
+// // console.log(question);
 
 
-// question.clear(); // removes all keys
-// console.log(question);
+
+
+
+
+
+
+
+// ///////////////////////////////////////////////////
+// // CLASSES
+// // es5
+
+// var Person5 = function(name, year, job) {
+//     this.name = name, 
+//     this.year = year,
+//     this.job = job
+// }
+
+// Person5.prototype.calculateAge= function () {
+//     var age = new Date().getFullYear() - this.year;
+//     console.log(age)
+// }
+
+
+// // es6
+// class Person6 {
+//     constructor(name, year, job) {
+//         this.name = name;
+//         this.year = year;
+//         this.job = job
+//     }
+
+//     calculateAge() {
+//         var age = new Date().getFullYear() - this.year;
+//         console.log(age)
+//     }
+
+//     static example () {
+//         console.log('static methods can only be called by the class, not instances of the class')
+//     }
+// }
+
+// const john6 = new Person6('John', 1989, 'engineer')
+// john6.calculateAge();
+// // john6.example(); // error
+// Person6.example();

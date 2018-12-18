@@ -535,3 +535,81 @@
 // john6.calculateAge();
 // // john6.example(); // error
 // Person6.example();
+
+
+
+
+
+
+
+// ///////////////////////////////////////////////////
+// SUB CLASSES
+// es5
+
+// var Person5 = function(name, year, job) {
+//     this.name = name, 
+//     this.year = year,
+//     this.job = job
+// }
+
+// Person5.prototype.calculateAge= function () {
+//     var age = new Date().getFullYear() - this.year;
+//     console.log(age)
+// }
+
+// var Athlete5 = function (name, year, job, olympicGames, medals) {
+//     Person5.call(this, name, year, job)
+//     this.olympicGames = olympicGames;
+//     this.medals = medals
+// }
+
+// Athlete5.prototype = Object.create(Person5.prototype);
+
+// Athlete5.prototype.wonMedal = function() {
+//     this.medals++;
+//     console.log(this.medals)
+// }
+
+
+
+
+// var john5 = new Athlete5('John', 1990, 'swimmer', 3, 5)
+// console.log(john5)
+
+
+// // es6
+// class Person6 {
+//     constructor(name, year, job) {
+//         this.name = name;
+//         this.year = year;
+//         this.job = job
+//     }
+
+//     calculateAge() {
+//         var age = new Date().getFullYear() - this.year;
+//         console.log(age)
+//     }
+
+//     static example () {
+//         console.log('static methods can only be called by the class, not instances of the class')
+//     }
+// }
+
+// class Athlete6 extends Person6 {
+//     constructor(name, year, job, olympicGames, medals) {
+//         super(name, year, job);
+//         this.olympicGames = olympicGames;
+//         this.medals = medals
+//     }   
+
+
+//     wonMedal() {
+//         this.medals++;
+//         console.log(this.medals)
+//     }
+// }
+
+// const john6 = new Athlete6('John', 1990, 'swimmer', 3, 5);
+// john6.wonMedal()
+// john6.wonMedal()
+// john6.wonMedal()
